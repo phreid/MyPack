@@ -5,7 +5,8 @@ package model;
  * of gear.
  *
  * Classes extending AbstractEntry can represent collections of gear (PackList, Pack) or
- * a single piece of gear (PackItem).
+ * a single piece of gear (PackItem). If the class represents a collection, the
+ * AbstractEntry is said to have children.
  */
 public abstract class AbstractEntry {
     protected String name;
@@ -14,8 +15,8 @@ public abstract class AbstractEntry {
 
     // REQUIRES: name has non-zero length
     // MODIFIES: this
-    // EFFECTS: name of entry is set to name, description is set to
-    //          empty string
+    // EFFECTS: creates a new AbstractEntry with no children. name of entry is set to name,
+    //          description is set to empty string
     public AbstractEntry(String name) {
         this.name = name;
         this.description = "";
@@ -24,8 +25,8 @@ public abstract class AbstractEntry {
 
     // REQUIRES: name has non-zero length
     // MODIFIES: this
-    // EFFECTS: name of entry is set to name, description is set to
-    //          description
+    // EFFECTS: creates a new AbstractEntry with no children.name of entry is set to name,
+    // description is set to description
     public AbstractEntry(String name, String description) {
         this(name);
         this.description = description;

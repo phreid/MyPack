@@ -72,6 +72,7 @@ public class MyPackApp {
         System.out.println("\t(q)uit");
     }
 
+    // MODIFIES: this
     // EFFECTS: processes input at the top-level pack menu
     private void processTopMenu(String command) {
         if (command.equals("n")) {
@@ -82,12 +83,13 @@ public class MyPackApp {
         } else if (command.equals("e")) {
             choosePackMenu();
         } else if (command.equals("d")) {
-            // delete pack menu
+            // TODO: delete pack menu
         } else {
             System.out.println("Please enter a valid command.");
         }
     }
 
+    // MODIFIES: this
     // EFFECTS: displays the new list menu for users to create one or more new lists. if isPack
     //          is true, user is at the top-level menu and this method will return a list of Pack.
     //          otherwise, returns a list of PackList
@@ -191,6 +193,7 @@ public class MyPackApp {
         return Double.parseDouble(command);
     }
 
+    // MODIFIES: this
     // EFFECTS: displays the edit pack menu
     private void displayEditPackMenu() {
         while (true) {
@@ -201,7 +204,7 @@ public class MyPackApp {
             System.out.println("\tedit (n)ame");
             System.out.println("\tedit (d)escription");
             System.out.println("\t(a)dd category");
-            System.out.println("\tedit (c)ategory");
+            //System.out.println("\tedit (c)ategory"); TODO: implement edit category menu
             System.out.println("\tadd (i)tem");
             System.out.println("\t(r)eturn to previous menu");
 
@@ -223,7 +226,7 @@ public class MyPackApp {
         } else if (command.equals("a")) {
             processAddCategory();
         } else if (command.equals("c")) {
-            //
+            // TODO: implement edit category menu
         } else if (command.equals("i")) {
             processAddItem();
         } else {
@@ -231,6 +234,7 @@ public class MyPackApp {
         }
     }
 
+    // MODIFIES: this
     // EFFECTS: processes user input at the add item menu
     private void processAddItem() {
         PackList list = chooseListMenu();
@@ -242,6 +246,7 @@ public class MyPackApp {
         }
     }
 
+    // MODIFIES: this
     // EFFECTS: processes user input at the add category menu
     private void processAddCategory() {
         List<PackList> newList = newListMenu(false);
@@ -250,6 +255,7 @@ public class MyPackApp {
         }
     }
 
+    // MODIFIES: this
     // EFFECTS: processes user input at the edit pack description menu
     private void processEditPackDescription() {
         String description = getDescription();
@@ -258,6 +264,7 @@ public class MyPackApp {
         }
     }
 
+    // MODIFIES: this
     // EFFECTS: processes user input at the edit pack name menu
     private void processEditPackName() {
         String name = getName();
@@ -266,6 +273,7 @@ public class MyPackApp {
         }
     }
 
+    // MODIFIES: this
     // EFFECTS: prompts the user to choose a PackList from the current pack and returns it, or returns null
     //          if the user cancels. Does not allow the user to select a Pack.
     private PackList chooseListMenu() {
@@ -294,6 +302,7 @@ public class MyPackApp {
         return null;
     }
 
+    // MODIFIES: this
     // EFFECTS: displays the new item menu for users to create one or more new items.
     //          returns a list of the new items
     private List<PackItem> newItemMenu() {
@@ -382,7 +391,7 @@ public class MyPackApp {
         return result;
     }
 
-
+    // MODIFIES: this
     // EFFECTS: prompts the user to enter a name and returns it, or
     //          returns null if the user cancels.
     private String getName() {
@@ -401,6 +410,7 @@ public class MyPackApp {
         }
     }
 
+    // MODIFIES: this
     // EFFECTS: prompts the user to enter a description and returns it, or
     //          returns null if the user cancels.
     private String getDescription() {
@@ -415,12 +425,13 @@ public class MyPackApp {
         }
     }
 
+    // MODIFIES: this
     // EFFECTS: prompts the user to enter a weight and returns it, or
     //          returns null if the user cancels.
     private Integer getWeight() {
         String command;
 
-        System.out.print("weight (in grams, required): ");
+        System.out.print("weight (in grams, required) (please enter numbers only): ");
         command = input.nextLine();
         if (command.equals("c")) {
             return null;
@@ -429,12 +440,13 @@ public class MyPackApp {
         }
     }
 
+    // MODIFIES: this
     // EFFECTS: prompts the user to enter a cost and returns it, or
     //          returns null if the user cancels.
     private Double getCost() {
         String command;
 
-        System.out.print("cost (in dollars and cents, required): ");
+        System.out.print("cost (in dollars and cents, required) (please enter numbers only): ");
         command = input.nextLine();
         if (command.equals("c")) {
             return null;
@@ -443,6 +455,7 @@ public class MyPackApp {
         }
     }
 
+    // MODIFIES: this
     // EFFECTS: prompts the user to enter a boolean representing if the item is worn and
     //          returns it, or returns null if the user cancels.
     private Boolean getIsWorn() {
@@ -457,6 +470,7 @@ public class MyPackApp {
         }
     }
 
+    // MODIFIES: this
     // EFFECTS: prompts the user to enter a boolean representing if the item is worn and
     //          returns it, or returns null if the user cancels.
     private Boolean getIsConsumable() {
@@ -494,6 +508,9 @@ public class MyPackApp {
 
     // REQUIRES: index and indentLevel greater than or equal to 0
     // EFFECTS: prints a single entry to the console
+    // ACKNOWLEDGEMENT: information on String.format() came from here:
+    //                  https://dzone.com/articles/java-string-format-examples.
+    //                  (I knew about StringBuilder from previous Java experience)
     private void printEntry(AbstractEntry entry, int index, int indentLevel) {
         StringBuilder builder = new StringBuilder();
         StringBuilder indentBuilder = new StringBuilder();
@@ -525,8 +542,9 @@ public class MyPackApp {
         System.out.println(builder.toString());
     }
 
-    // EFFECTS: returns all the entries in the pack, including the pack itself.
-    //          helper function that allows users to select entries directly from the pack menu
+    // EFFECTS: returns all the entries in packList, including packList itself.
+    //          ui helper function, allows to users select PackItems directly from the
+    //          without needing to first select a category
     private List<AbstractEntry> getAllEntries(PackList packList) {
         List<AbstractEntry> result = new ArrayList<>();
         result.add(packList);

@@ -4,7 +4,7 @@ package model;
  * Represents a single piece of gear in a pack. Items have
  * a name, description, cost (in dollars), and weight (in grams).
  * Description is blank by default. Cost and weight
- * are zero by default (an item can't literally weigh nothing, but
+ * can be zero (an item can't literally weigh nothing, but
  * for small items the weight might be inconsequential.)
  *
  * Items can be marked as worn and/or consumable. These items count
@@ -37,7 +37,8 @@ public class PackItem extends AbstractEntry {
         this.description = description;
     }
 
-    // REQUIRES: name is a non-empty string
+    // REQUIRES: name is a non-empty string, weight and cost are greater than or
+    //           equal to zero
     // MODIFIES: this
     // EFFECTS: name of item is set to name, description is set to description,
     //          weight is set to weight, cost is set to cost,
