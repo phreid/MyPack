@@ -544,7 +544,7 @@ public class MyPackApp {
 
     // EFFECTS: returns all the entries in packList, including packList itself.
     //          ui helper function, allows to users select PackItems directly from the
-    //          without needing to first select a category
+    //          pack menu without needing to select a category first
     private List<AbstractEntry> getAllEntries(PackList packList) {
         List<AbstractEntry> result = new ArrayList<>();
         result.add(packList);

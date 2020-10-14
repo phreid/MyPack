@@ -7,8 +7,10 @@ package model;
  * can be zero (an item can't literally weigh nothing, but
  * for small items the weight might be inconsequential.)
  *
- * Items can be marked as worn and/or consumable. These items count
+ * PackItems can be marked as worn and/or consumable. These items count
  * towards total weight, but not base weight.
+ *
+ * PackItems do not have child entries.
  */
 public class PackItem extends AbstractEntry {
     private int weight;
