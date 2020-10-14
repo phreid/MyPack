@@ -76,11 +76,12 @@ public class PackList extends AbstractEntry {
         return cost;
     }
 
+    // EFFECTS: returns the number of child entries in this
     public int size() {
         return children.size();
     }
 
-    // EFFECTS: returns the entry at position index
+    // EFFECTS: returns the child entry at position index
     public AbstractEntry get(int index) {
         return children.get(index);
     }

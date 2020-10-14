@@ -25,8 +25,8 @@ public abstract class AbstractEntry {
 
     // REQUIRES: name has non-zero length
     // MODIFIES: this
-    // EFFECTS: creates a new AbstractEntry with no children.name of entry is set to name,
-    // description is set to description
+    // EFFECTS: creates a new AbstractEntry with no children. name of entry is set to name,
+    //          description is set to description
     public AbstractEntry(String name, String description) {
         this(name);
         this.description = description;
