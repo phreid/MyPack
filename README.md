@@ -24,15 +24,17 @@ the weight of worn and consumable items), with base weight considered more relev
 ## User Stories
 - As a user, I want to be able to create a new pack (**IMPLEMENTED**)
 - As a user, I want to be able to edit a pack's name and description (**IMPLEMENTED**)
-- As a user, I want to be able to delete a pack
 - As a user, I want to be able to add a new category to a pack (**IMPLEMENTED**)
+- As a user, I want to be able to add items to a category (**IMPLEMENTED**)
+- As a user, I want to be able to view my packs (**IMPLEMENTED**)
+- As a user, I want to be able to view a single pack and see the items in it grouped by category (**IMPLEMENTED**)
+- As a user, I want to be able to see a pack's total weight and base weight (**IMPLEMENTED**)
+- As a user, I want the application to automatically save my data when I quit
+- As a user, I want the application to automatically load my data on startup
+- As a user, I want to be able to delete a pack
 - As a user, I want to be able to edit a category's name and description
 - As a user, I want to be able to delete a category from a pack
-- As a user, I want to be able to add items to a category (**IMPLEMENTED**)
 - As a user, I want to be able to change an item's category
 - As a user, I want to be able to edit each item's description, cost, and weight, and to mark
 each item as worn and/or consumable if applicable
 - As a user, I want to be able to delete an item from a category
-- As a user, I want to be able to view my packs (**IMPLEMENTED**)
-- As a user, I want to be able to view a single pack and see the items in it grouped by category (**IMPLEMENTED**)
-- As a user, I want to be able to see a pack's total weight and base weight (**IMPLEMENTED**)

@@ -1,0 +1,26 @@
+{
+  "packs" : [
+    {
+      "name": "pack1",
+      "description": "",
+      "children":[
+        {
+          "name": "(uncategorized)",
+          "description": "",
+          "children": []
+        }
+      ]
+    },
+    {
+      "name": "pack2",
+      "description": "desc1",
+      "children":[
+        {
+          "name": "(uncategorized)",
+          "description": "",
+          "children": []
+        }
+      ]
+    }
+  ]
+}

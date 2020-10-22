@@ -1,0 +1,81 @@
+{
+  "packs": [
+    {
+      "name": "pack1",
+      "description": "desc1",
+      "children": [
+        {
+          "name": "(uncategorized)",
+          "description": "",
+          "children": []
+        },
+        {
+          "name": "category1",
+          "description": "desc2",
+          "children": [
+            {
+              "name": "item1",
+              "description": "desc3",
+              "weight": 100,
+              "cost": 50.50,
+              "isWorn": false,
+              "isConsumable": true
+            },
+            {
+              "name": "item2",
+              "description": "desc4",
+              "weight": 500,
+              "cost": 10,
+              "isWorn": true,
+              "isConsumable": false
+            }
+          ]
+        },
+        {
+          "name": "category2",
+          "description": "desc5",
+          "children": [
+            {
+              "name": "item3",
+              "description": "desc6",
+              "weight": 1,
+              "cost": 1,
+              "isWorn": false,
+              "isConsumable": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "pack2",
+      "description": "desc7",
+      "children": [
+        {
+          "name": "(uncategorized)",
+          "description": "",
+          "children": []
+        },
+        {
+          "name": "category3",
+          "description": "desc8",
+          "children": []
+        },
+        {
+          "name": "category4",
+          "description": "desc9",
+          "children": [
+            {
+              "name": "item4",
+              "description": "desc10",
+              "weight": 400,
+              "cost": 50.99,
+              "isWorn": false,
+              "isConsumable": false
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
