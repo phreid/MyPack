@@ -4,7 +4,9 @@ import model.AbstractEntry;
 import model.PackItem;
 import model.PackList;
 import model.Pack;
+import persistence.JsonReader;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -21,6 +23,7 @@ public class MyPackApp {
     private Pack currentPack;
 
     private static final int NAME_CELL_WIDTH = 30;
+    private static final String DEFAULT_FILE_PATH = "./data/testReaderGeneralList.json";
 
     // MODIFIES: this
     // EFFECTS: runs the application
@@ -51,10 +54,22 @@ public class MyPackApp {
     }
 
     // MODIFIES: this
-    // EFFECTS: initializes the app
+    // EFFECTS: initializes the app and loads the saved packs file
     private void init() {
-        packs = new ArrayList<>();
+        try {
+            packs = loadPacks();
+        } catch (IOException e) {
+            System.out.println("error reading saved packs file.");
+            System.exit(0); // TODO: handle load error better
+        }
         input = new Scanner(System.in);
+    }
+
+    // EFFECTS: reads the saved packs file and returns it as a list of Packs,
+    //          or throws IOException
+    private List<Pack> loadPacks() throws IOException {
+        JsonReader reader = new JsonReader(DEFAULT_FILE_PATH);
+        return reader.read();
     }
 
     // EFFECTS: displays the top-level pack menu
