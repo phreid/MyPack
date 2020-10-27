@@ -1,53 +1,35 @@
-{"packs": [
-    {
-        "children": [
-            {
-                "children": [],
-                "name": "(uncategorized)",
-                "description": ""
-            },
-            {
-                "children": [{
-                    "cost": 200,
-                    "isWorn": false,
-                    "name": "tent",
-                    "description": "heavy tent",
-                    "weight": 1500,
-                    "isConsumable": false
-                }],
-                "name": "sleep",
-                "description": ""
-            },
-            {
-                "children": [{
-                    "cost": 0,
-                    "isWorn": false,
-                    "name": "fuel",
-                    "description": "isobutane",
-                    "weight": 100,
-                    "isConsumable": true
-                }],
-                "name": "cook",
-                "description": "cooking stuff"
-            }
-        ],
-        "name": "pack1",
-        "description": "first pack"
-    },
-    {
-        "children": [{
+{"packs": [{
+    "children": [
+        {
+            "children": [],
+            "name": "(uncategorized)",
+            "description": ""
+        },
+        {
+            "children": [{
+                "cost": 200,
+                "isWorn": false,
+                "name": "tent",
+                "description": "heavy tent",
+                "weight": 1500,
+                "isConsumable": false
+            }],
+            "name": "sleep",
+            "description": ""
+        },
+        {
             "children": [{
                 "cost": 0,
                 "isWorn": false,
-                "name": "junk",
-                "description": "",
-                "weight": 500,
-                "isConsumable": false
+                "name": "fuel",
+                "description": "isobutane",
+                "weight": 100,
+                "isConsumable": true
             }],
-            "name": "(uncategorized)",
-            "description": ""
-        }],
-        "name": "pack2",
-        "description": ""
-    }
-]}
+            "name": "cook",
+            "description": "cooking stuff"
+        }
+    ],
+    "name": "pack1",
+    "description": "first pack"
+}]}

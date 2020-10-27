@@ -16,7 +16,6 @@ import static org.junit.jupiter.api.Assertions.*;
  * ACKNOWLEDGEMENT: this class follows the structure of JsonWriterTest here:
  * https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo/blob/master/src/test/persistence/JsonWriterTest.java
  */
-
 public class JsonWriterTest {
     private static String PATH = "./data/";
 

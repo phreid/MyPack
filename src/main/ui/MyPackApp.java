@@ -106,11 +106,40 @@ public class MyPackApp {
                 packs.add((Pack) list);
             }
         } else if (command.equals("e")) {
-            choosePackMenu();
+            chooseEditPackMenu();
         } else if (command.equals("d")) {
-            // TODO: delete pack menu
+            chooseDeletePackMenu();
         } else {
             System.out.println("Please enter a valid command.");
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: displays the delete pack menu
+    private void chooseDeletePackMenu() {
+        String command;
+        int index;
+
+        if (packs.isEmpty()) {
+            System.out.println("\nNo packs to delete.");
+            return;
+        }
+
+        while (true) {
+            System.out.print("\nEnter the pack number to delete (WARNING: THIS CANNOT BE UNDONE) (or 'c' to cancel): ");
+            command = input.nextLine();
+            if (command.equals("c")) {
+                break;
+            }
+
+            index = getInteger(command);
+
+            if (index > packs.size() - 1) {
+                System.out.println("\nPlease enter a valid pack number.");
+            } else {
+                packs.remove(index);
+                break;
+            }
         }
     }
 
@@ -176,7 +205,7 @@ public class MyPackApp {
 
     // MODIFIES: this
     // EFFECTS: displays the choose pack menu and processes user input
-    private void choosePackMenu() {
+    private void chooseEditPackMenu() {
         String command;
         int index;
 
