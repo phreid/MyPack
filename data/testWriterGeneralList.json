@@ -1,0 +1,70 @@
+{"packs": [
+    {
+        "children": [
+            {
+                "children": [],
+                "name": "(uncategorized)",
+                "description": ""
+            },
+            {
+                "children": [
+                    {
+                        "cost": 50,
+                        "isWorn": false,
+                        "name": "item1",
+                        "description": "desc1",
+                        "weight": 500,
+                        "isConsumable": false
+                    },
+                    {
+                        "cost": 100,
+                        "isWorn": true,
+                        "name": "item2",
+                        "description": "desc2",
+                        "weight": 100,
+                        "isConsumable": false
+                    }
+                ],
+                "name": "cat1",
+                "description": ""
+            },
+            {
+                "children": [{
+                    "cost": 100,
+                    "isWorn": false,
+                    "name": "item3",
+                    "description": "desc3",
+                    "weight": 100,
+                    "isConsumable": true
+                }],
+                "name": "cat2",
+                "description": ""
+            }
+        ],
+        "name": "pack1",
+        "description": ""
+    },
+    {
+        "children": [
+            {
+                "children": [],
+                "name": "(uncategorized)",
+                "description": ""
+            },
+            {
+                "children": [{
+                    "cost": 0,
+                    "isWorn": true,
+                    "name": "item1",
+                    "description": "desc1",
+                    "weight": 25,
+                    "isConsumable": true
+                }],
+                "name": "cat3",
+                "description": "desc3"
+            }
+        ],
+        "name": "pack2",
+        "description": "desc2"
+    }
+]}

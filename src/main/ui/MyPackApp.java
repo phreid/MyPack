@@ -5,6 +5,7 @@ import model.PackItem;
 import model.PackList;
 import model.Pack;
 import persistence.JsonReader;
+import persistence.JsonWriter;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -23,7 +24,7 @@ public class MyPackApp {
     private Pack currentPack;
 
     private static final int NAME_CELL_WIDTH = 30;
-    private static final String DEFAULT_FILE_PATH = "./data/testReaderGeneralList.json";
+    private static final String DEFAULT_FILE_PATH = "./data/savedPacks.json";
 
     // MODIFIES: this
     // EFFECTS: runs the application
@@ -32,25 +33,34 @@ public class MyPackApp {
     }
 
     // MODIFIES: this
-    // EFFECTS: processes user input
+    // EFFECTS: processes user input, saves the list of packs on exit
     private void runApp() {
         init();
 
         String command;
 
+        JsonWriter writer = new JsonWriter(DEFAULT_FILE_PATH);
         while (true) {
             displayTopMenu();
             command = input.nextLine();
 
             if (command.equals("q")) {
+                try {
+                    writer.open();
+                    writer.write(packs);
+                } catch (IOException e) {
+                    System.out.println("error saving to file. your changes were not saved.");
+                } finally {
+                    writer.close();
+                }
                 break;
             } else {
                 processTopMenu(command);
             }
         }
 
-        System.out.println("\nGoodbye!");
-
+        System.out.println("\nyour changes were saved.");
+        System.out.println("\ngoodbye!");
     }
 
     // MODIFIES: this

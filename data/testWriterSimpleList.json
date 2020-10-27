@@ -1,0 +1,29 @@
+{"packs": [
+    {
+        "children": [{
+            "children": [],
+            "name": "(uncategorized)",
+            "description": ""
+        }],
+        "name": "pack1",
+        "description": ""
+    },
+    {
+        "children": [{
+            "children": [],
+            "name": "(uncategorized)",
+            "description": ""
+        }],
+        "name": "pack2",
+        "description": "desc2"
+    },
+    {
+        "children": [{
+            "children": [],
+            "name": "(uncategorized)",
+            "description": ""
+        }],
+        "name": "pack3",
+        "description": "desc3"
+    }
+]}
