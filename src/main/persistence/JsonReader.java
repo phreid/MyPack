@@ -42,7 +42,7 @@ public class JsonReader {
     private String readFile(String source) throws IOException {
         StringBuilder builder = new StringBuilder();
 
-        Stream<String> stream = Files.lines(Paths.get(filePath), StandardCharsets.UTF_8);
+        Stream<String> stream = Files.lines(Paths.get(source), StandardCharsets.UTF_8);
         Iterator<String> iterator = stream.iterator();
         while (iterator.hasNext()) {
             builder.append(iterator.next());

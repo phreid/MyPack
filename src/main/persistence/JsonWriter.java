@@ -1,6 +1,5 @@
 package persistence;
 
-import model.AbstractEntry;
 import model.Pack;
 import model.PackItem;
 import model.PackList;
@@ -8,7 +7,6 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
