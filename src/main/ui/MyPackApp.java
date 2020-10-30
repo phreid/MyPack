@@ -94,7 +94,7 @@ public class MyPackApp {
         System.out.println("\t(n)ew pack");
         System.out.println("\t(e)dit pack");
         System.out.println("\t(d)elete pack");
-        System.out.println("\t(q)uit");
+        System.out.println("\t(q)uit and save changes");
     }
 
     // MODIFIES: this
