@@ -1,5 +1,6 @@
 package persistence;
 
+import model.AbstractEntry;
 import model.Pack;
 import model.PackItem;
 import model.PackList;
@@ -36,12 +37,12 @@ public class JsonWriter {
 
     // MODIFIES: this
     // EFFECTS: writes JSON representation of packList to file
-    public void write(List<Pack> packList) {
+    public void write(List<AbstractEntry> packList) {
         JSONObject json = new JSONObject();
         JSONArray jsonArray = new JSONArray();
 
-        for (Pack pack : packList) {
-            jsonArray.put(packToJson(pack));
+        for (AbstractEntry entry : packList) {
+            jsonArray.put(packToJson((Pack) entry));
         }
 
         json.put("packs", jsonArray);

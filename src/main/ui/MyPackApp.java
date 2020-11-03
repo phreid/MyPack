@@ -19,7 +19,7 @@ import java.util.Scanner;
  * TellerApp project
  */
 public class MyPackApp {
-    private List<Pack> packs;
+    private List<AbstractEntry> packs;
     private Scanner input;
     private Pack currentPack;
 
@@ -77,7 +77,7 @@ public class MyPackApp {
 
     // EFFECTS: reads the saved packs file and returns it as a list of Packs,
     //          or throws IOException
-    private List<Pack> loadPacks() throws IOException {
+    private List<AbstractEntry> loadPacks() throws IOException {
         JsonReader reader = new JsonReader(DEFAULT_FILE_PATH);
         return reader.read();
     }
@@ -226,7 +226,7 @@ public class MyPackApp {
             if (index > packs.size() - 1) {
                 System.out.println("\nPlease enter a valid pack number.");
             } else {
-                currentPack = packs.get(index);
+                currentPack = (Pack) packs.get(index);
                 displayEditPackMenu();
                 break;
             }

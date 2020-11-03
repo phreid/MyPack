@@ -1,5 +1,6 @@
 package persistence;
 
+import model.AbstractEntry;
 import model.Pack;
 import model.PackItem;
 import model.PackList;
@@ -31,7 +32,7 @@ public class JsonReader {
 
     // EFFECTS: reads list of Packs from source file and returns the list
     //          or throws IOException if an error occurs while reading the file
-    public List<Pack> read() throws IOException {
+    public List<AbstractEntry> read() throws IOException {
         String jsonData = readFile(filePath);
         JSONObject jsonObject = new JSONObject(jsonData);
         return parsePacks(jsonObject);
@@ -52,8 +53,8 @@ public class JsonReader {
     }
 
     // EFFECTS: parses JSON object into list of Packs and returns the list
-    private List<Pack> parsePacks(JSONObject jsonObject) {
-        List<Pack> packs = new ArrayList<>();
+    private List<AbstractEntry> parsePacks(JSONObject jsonObject) {
+        List<AbstractEntry> packs = new ArrayList<>();
         JSONArray jsonArray = jsonObject.getJSONArray("packs");
 
         for (Object json : jsonArray) {

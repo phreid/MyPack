@@ -22,7 +22,7 @@ public class JsonReaderTest {
     public void testReadEmptyFile() {
         JsonReader reader = new JsonReader(PATH + "testReaderEmptyList.json");
         try {
-            List<Pack> packList = reader.read();
+            List<AbstractEntry> packList = reader.read();
             assertEquals(0, packList.size());
         } catch (IOException e) {
             e.printStackTrace();
@@ -34,10 +34,10 @@ public class JsonReaderTest {
     public void testReadMinimalFile() {
         JsonReader reader = new JsonReader(PATH + "testReaderMinimalList.json");
         try {
-            List<Pack> packList = reader.read();
+            List<AbstractEntry> packList = reader.read();
             assertEquals(2, packList.size());
 
-            Pack pack1 = packList.get(0);
+            Pack pack1 = (Pack) packList.get(0);
             assertEquals("pack1", pack1.getName());
             assertEquals("", pack1.getDescription());
             assertEquals(1, pack1.size());
@@ -48,7 +48,7 @@ public class JsonReaderTest {
             assertEquals("", child1.getDescription());
             assertEquals(0, child1.size());
 
-            Pack pack2 = packList.get(1);
+            Pack pack2 = (Pack) packList.get(1);
             assertEquals("pack2", pack2.getName());
             assertEquals("desc1", pack2.getDescription());
             assertEquals(1, pack2.size());
@@ -67,7 +67,7 @@ public class JsonReaderTest {
     public void testReadNoFileExists() {
         JsonReader reader = new JsonReader(PATH + "not a real file");
         try {
-            List<Pack> packList = reader.read();
+            List<AbstractEntry> packList = reader.read();
             fail("no exception thrown");
         } catch (IOException e) {
             // expected
@@ -78,10 +78,10 @@ public class JsonReaderTest {
     public void testReadGeneralFile() {
         JsonReader reader = new JsonReader(PATH + "testReaderGeneralList.json");
         try {
-            List<Pack> packList = reader.read();
+            List<AbstractEntry> packList = reader.read();
             assertEquals(2, packList.size());
 
-            Pack pack1 = packList.get(0);
+            Pack pack1 = (Pack) packList.get(0);
             assertTrue(pack1.get(0) instanceof PackList);
 
             PackList child1 = (PackList) pack1.get(0);
@@ -104,7 +104,7 @@ public class JsonReaderTest {
             PackList child3 = (PackList) pack1.get(2);
             assertEquals("item3",child3.get(0).getName());
 
-            Pack pack2 = packList.get(1);
+            Pack pack2 = (Pack) packList.get(1);
             PackList child4 = (PackList) pack2.get(2);
             assertEquals("item4", child4.get(0).getName());
 

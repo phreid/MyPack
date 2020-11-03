@@ -1,5 +1,6 @@
 package persistence;
 
+import model.AbstractEntry;
 import model.Pack;
 import model.PackItem;
 import model.PackList;
@@ -34,14 +35,14 @@ public class JsonWriterTest {
     @Test
     public void testWriterEmptyPackList() {
         try {
-            List<Pack> packs = new ArrayList<>();
+            List<AbstractEntry> packs = new ArrayList<>();
             JsonWriter writer = new JsonWriter(PATH + "testWriterEmptyList.json");
             writer.open();
             writer.write(packs);
             writer.close();
 
             JsonReader reader = new JsonReader(PATH + "testWriterEmptyList.json");
-            List<Pack> readPacks = reader.read();
+            List<AbstractEntry> readPacks = reader.read();
             assertTrue(readPacks.isEmpty());
         } catch (IOException e) {
             fail("exception should not have been thrown");
@@ -51,7 +52,7 @@ public class JsonWriterTest {
     @Test
     public void testWriterSimpleList() {
         try {
-            List<Pack> packs = new ArrayList<>();
+            List<AbstractEntry> packs = new ArrayList<>();
             packs.add(new Pack("pack1"));
             packs.add(new Pack("pack2", "desc2"));
             packs.add(new Pack("pack3", "desc3"));
@@ -62,20 +63,23 @@ public class JsonWriterTest {
             writer.close();
 
             JsonReader reader = new JsonReader(PATH + "testWriterSimpleList.json");
-            List<Pack> readPacks = reader.read();
+            List<AbstractEntry> readPacks = reader.read();
             assertEquals(3, readPacks.size());
 
-            assertEquals("pack1", readPacks.get(0).getName());
-            assertEquals("", readPacks.get(0).getDescription());
-            assertEquals(1, readPacks.get(0).size());
+            Pack pack1 = (Pack) readPacks.get(0);
+            assertEquals("pack1", pack1.getName());
+            assertEquals("", pack1.getDescription());
+            assertEquals(1, pack1.size());
 
-            assertEquals("pack2", readPacks.get(1).getName());
-            assertEquals("desc2", readPacks.get(1).getDescription());
-            assertEquals(1, readPacks.get(1).size());
+            Pack pack2 = (Pack) readPacks.get(1);
+            assertEquals("pack2", pack2.getName());
+            assertEquals("desc2", pack2.getDescription());
+            assertEquals(1, pack2.size());
 
-            assertEquals("pack3", readPacks.get(2).getName());
-            assertEquals("desc3", readPacks.get(2).getDescription());
-            assertEquals(1, readPacks.get(2).size());
+            Pack pack3 = (Pack) readPacks.get(2);
+            assertEquals("pack3", pack3.getName());
+            assertEquals("desc3", pack3.getDescription());
+            assertEquals(1, pack3.size());
         } catch (IOException e) {
             fail("exception should not have been thrown");
         }
@@ -84,7 +88,7 @@ public class JsonWriterTest {
     @Test
     public void testWriterGeneralList() {
         try {
-            List<Pack> packs = new ArrayList<>();
+            List<AbstractEntry> packs = new ArrayList<>();
             Pack pack1 = new Pack("pack1");
             PackList cat1 = new PackList("cat1");
             cat1.add(new PackItem("item1", "desc1", 500, 50.0, false, false));
@@ -110,9 +114,9 @@ public class JsonWriterTest {
             writer.close();
 
             JsonReader reader = new JsonReader(PATH + "testWriterGeneralList.json");
-            List<Pack> readPacks = reader.read();
+            List<AbstractEntry> readPacks = reader.read();
             assertEquals(2, packs.size());
-            pack1 = readPacks.get(0);
+            pack1 = (Pack) readPacks.get(0);
             
             assertEquals("cat1", pack1.get(1).getName());
             assertEquals("", pack1.get(1).getDescription());
@@ -137,7 +141,7 @@ public class JsonWriterTest {
             assertFalse(((PackItem) ((PackList) pack1.get(2)).get(0)).isWorn());
             assertTrue(((PackItem) ((PackList) pack1.get(2)).get(0)).isConsumable());
 
-            pack2 = readPacks.get(1);
+            pack2 = (Pack) readPacks.get(1);
             assertEquals("cat3", pack2.get(1).getName());
             assertEquals("desc3", pack2.get(1).getDescription());
             assertEquals("item1", ((PackList) pack2.get(1)).get(0).getName());
