@@ -12,7 +12,7 @@ import java.util.List;
 public class MyPackGUI extends JFrame {
     private List<AbstractEntry> packList;
 
-    static int FRAME_WIDTH = 800;
+    static int FRAME_WIDTH = 1000;
     static int FRAME_HEIGHT = 800;
     private static final String DEFAULT_FILE_PATH = "./data/savedPacks.json";
 
@@ -36,7 +36,8 @@ public class MyPackGUI extends JFrame {
             e.printStackTrace();
         }
 
-        setupPackTablePanel();
+        //setupPackTablePanel();
+        setupSinglePackTablePanel();
 
         pack();
         setVisible(true);
@@ -54,6 +55,13 @@ public class MyPackGUI extends JFrame {
     private void setupPackTablePanel() {
         TablePanel tablePanel = new TablePanel();
         tablePanel.setTableData(packList);
+
+        add(tablePanel);
+    }
+
+    private void setupSinglePackTablePanel() {
+        SinglePackTablePanel tablePanel = new SinglePackTablePanel();
+        tablePanel.setTableData((Pack) packList.get(0));
 
         add(tablePanel);
     }

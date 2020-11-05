@@ -1,6 +1,8 @@
 package ui;
 
 import model.AbstractEntry;
+import model.Pack;
+import model.PackItem;
 
 import javax.swing.*;
 import javax.swing.table.AbstractTableModel;
