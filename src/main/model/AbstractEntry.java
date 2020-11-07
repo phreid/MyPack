@@ -1,5 +1,7 @@
 package model;
 
+import java.io.IOException;
+
 /**
  * Abstract class representing one entry (Pack, PackList, or PackItem) in a collection
  * of gear.

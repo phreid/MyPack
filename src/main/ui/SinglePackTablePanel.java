@@ -20,7 +20,7 @@ public class SinglePackTablePanel extends JPanel {
     private JTable table;
     private MyTableModel model;
 
-    // EFFECTS: constructs a new TablePanel containing the provided list of AbstractEntries
+    // EFFECTS: constructs a new MainTablePanel
     public SinglePackTablePanel() {
         super();
         model = new MyTableModel();
