@@ -1,29 +1,58 @@
 package ui;
 
-import jdk.nashorn.internal.scripts.JO;
-import model.AbstractEntry;
 import model.Pack;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.time.temporal.JulianFields;
 
 public class MainMenuButtonPanel extends JPanel {
     private JButton newButton;
     private JButton deleteButton;
-    private ButtonPanelController controller;
+    private JButton editButton;
+    private MainButtonPanelController controller;
 
     private static final int HEIGHT = 20;
     private static final int WIDTH = (int) (MyPackGUI.FRAME_WIDTH * 0.15);
+    private static final Dimension BUTTON_DIM = new Dimension(WIDTH, HEIGHT);
 
     // EFFECTS: constructs a new MainMenuButtonPanel
     public MainMenuButtonPanel() {
-        super(new GridLayout(2, 1));
+        super(new GridLayout(3, 1));
 
+        setupNewButton();
+        setupDeleteButton();
+        setupEditButton();
+    }
+
+    private void setupEditButton() {
+        editButton = new JButton("Edit pack");
+        editButton.setPreferredSize(BUTTON_DIM);
+        editButton.addActionListener(e -> {
+            if (controller != null) {
+                controller.editSelectedEntry();
+            }
+        });
+        editButton.setEnabled(false);
+
+        add(editButton);
+    }
+
+    private void setupDeleteButton() {
+        deleteButton = new JButton("Delete pack");
+        deleteButton.setPreferredSize(BUTTON_DIM);
+        deleteButton.addActionListener(e -> {
+            if (controller != null) {
+                controller.deleteSelectedEntry();
+            }
+        });
+        deleteButton.setEnabled(false);
+
+        add(deleteButton);
+    }
+
+    private void setupNewButton() {
         newButton = new JButton("New pack");
-        newButton.setPreferredSize(new Dimension(WIDTH, HEIGHT));
+        newButton.setPreferredSize(BUTTON_DIM);
         newButton.addActionListener(e -> {
             if (controller != null) {
                 showNewPackDialog();
@@ -31,16 +60,6 @@ public class MainMenuButtonPanel extends JPanel {
         });
 
         add(newButton);
-
-        deleteButton = new JButton("Delete pack");
-        deleteButton.setPreferredSize(new Dimension(WIDTH, HEIGHT));
-        deleteButton.addActionListener(e -> {
-            if (controller != null) {
-                controller.deleteSelectedEntry();
-            }
-        });
-
-        add(deleteButton);
     }
 
     // MODIFIES: controller
@@ -70,7 +89,15 @@ public class MainMenuButtonPanel extends JPanel {
         }
     }
 
-    void setController(ButtonPanelController controller) {
+    void setController(MainButtonPanelController controller) {
         this.controller = controller;
+    }
+
+    public void setEditEnabled(boolean b) {
+        editButton.setEnabled(b);
+    }
+
+    public void setDeleteEnabled(boolean b) {
+        deleteButton.setEnabled(b);
     }
 }

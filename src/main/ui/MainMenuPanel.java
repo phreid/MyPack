@@ -3,18 +3,21 @@ package ui;
 import model.AbstractEntry;
 
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import java.awt.*;
 import java.util.List;
 
 public class MainMenuPanel extends JPanel {
     private JTable table;
     private MainTableModel model;
-    MainMenuButtonPanel buttonPanel;
-    ButtonPanelController controller;
+    private MyPackGUI parent;
+    MainButtonPanelController controller;
 
     // EFFECTS: constructs a new MainTablePanel
-    public MainMenuPanel(List<AbstractEntry> entries) {
+    public MainMenuPanel(MyPackGUI parent, List<AbstractEntry> entries) {
         super();
+        this.parent = parent;
         model = new MainTableModel(entries);
         table = new JTable(model);
         table.setPreferredScrollableViewportSize(
@@ -26,23 +29,18 @@ public class MainMenuPanel extends JPanel {
         add(scrollPane);
 
         setupMainMenuButtonPanel();
+
+        table.getSelectionModel().addListSelectionListener(e -> {
+            controller.setEditEnabled(true);
+            controller.setDeleteEnabled(true);
+        });
     }
 
     private void setupMainMenuButtonPanel() {
         MainMenuButtonPanel buttonPanel = new MainMenuButtonPanel();
-        ButtonPanelController controller = new ButtonPanelController(table, model, buttonPanel);
+        controller = new MainButtonPanelController(parent, table, model, buttonPanel);
         buttonPanel.setController(controller);
 
         add(buttonPanel);
-    }
-//
-//    // MODIFIES: this
-//    // EFFECTS: sets the table data to entryList and updates table
-//    public void setTableData(List<AbstractEntry> entries) {
-//        model.setTableData(entries);
-//    }
-
-    MainTableModel getModel() {
-        return model;
     }
 }

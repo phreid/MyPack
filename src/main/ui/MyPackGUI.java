@@ -11,7 +11,6 @@ import java.util.List;
 
 public class MyPackGUI extends JFrame {
     private List<AbstractEntry> packList;
-    private MainTablePanel mainTablePanel;
     private MainMenuPanel mainMenuPanel;
 
     static int FRAME_WIDTH = 1000;
@@ -40,27 +39,19 @@ public class MyPackGUI extends JFrame {
         }
 
         setupMainMenuPanel();
-//        setupPackTablePanel();
-//        setupMainMenuButtonPanel();
-        //setupSinglePackTablePanel();
 
         pack();
         setVisible(true);
     }
 
     private void setupMainMenuPanel() {
-        mainMenuPanel = new MainMenuPanel(packList);
-
-        getContentPane().add(mainMenuPanel);
+        mainMenuPanel = new MainMenuPanel(this, packList);
+        setContentPane(mainMenuPanel);
     }
 
-//    private void setupMainMenuButtonPanel() {
-//        MainMenuButtonPanel buttonPanel = new MainMenuButtonPanel();
-//        ButtonPanelController controller = new ButtonPanelController(mainTablePanel, buttonPanel);
-//        buttonPanel.setController(controller);
-//
-//        add(buttonPanel);
-//    }
+    public void showMainMenu() {
+        setContentPane(mainMenuPanel);
+    }
 
     // EFFECTS: reads the saved packs file and returns it as a list of Packs,
     //          or throws IOException
@@ -69,19 +60,9 @@ public class MyPackGUI extends JFrame {
         return reader.read();
     }
 
-//    // MODIFIES: this
-//    // EFFECTS: creates the Pack table and adds it to this
-//    private void setupPackTablePanel() {
-//        mainTablePanel = new MainTablePanel();
-//        mainTablePanel.setTableData(packList);
-//
-//        add(mainTablePanel);
-//    }
-
-//    private void setupSinglePackTablePanel() {
-//        SinglePackTablePanel tablePanel = new SinglePackTablePanel();
-//        tablePanel.setTableData((Pack) packList.get(0));
-//
-//        add(tablePanel);
-//    }
+    public void openSinglePackMenu(Pack pack) {
+        SinglePackMenuPanel newPanel = new SinglePackMenuPanel(this, pack);
+        setContentPane(newPanel);
+        pack();
+    }
 }

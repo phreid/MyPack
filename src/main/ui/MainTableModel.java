@@ -78,11 +78,34 @@ public class MainTableModel extends AbstractTableModel {
         }
     }
 
+    @Override
+    public boolean isCellEditable(int rowIndex, int columnIndex) {
+        return columnIndex < 2;
+    }
+
+    @Override
+    public void setValueAt(Object value, int rowIndex, int columnIndex) {
+        AbstractEntry entry = entries.get(rowIndex);
+        switch (columnIndex) {
+            case 0:
+                entry.setName((String) value);
+                break;
+            default:
+                entry.setDescription((String) value);
+        }
+
+        fireTableCellUpdated(rowIndex, columnIndex);
+    }
+
     public void addEntry(AbstractEntry entry) {
         entries.add(entry);
     }
 
     public void removeEntry(int row) {
         entries.remove(row);
+    }
+
+    public AbstractEntry getEntry(int row) {
+        return entries.get(row);
     }
 }
