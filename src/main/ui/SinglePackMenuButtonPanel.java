@@ -1,6 +1,5 @@
 package ui;
 
-import model.Pack;
 import model.PackItem;
 import model.PackList;
 
@@ -61,22 +60,18 @@ public class SinglePackMenuButtonPanel extends JPanel {
         JLabel wornLabel = new JLabel("Worn? ");
         JLabel consumableLabel = new JLabel("Consumable? ");
 
-        JPanel dialogPanel = new JPanel();
-        dialogPanel.add(nameLabel);
-        dialogPanel.add(nameField);
-        dialogPanel.add(descLabel);
-        dialogPanel.add(descField);
-        dialogPanel.add(costLabel);
-        dialogPanel.add(costField);
-        dialogPanel.add(weightLabel);
-        dialogPanel.add(weightField);
-        dialogPanel.add(wornLabel);
-        dialogPanel.add(wornField);
-        dialogPanel.add(consumableLabel);
-        dialogPanel.add(consumableField);
+        JPanel dialogPanel = getDialogPanel(nameField, descField, costField,
+                weightField, wornField, consumableField, nameLabel,
+                descLabel, costLabel, weightLabel, wornLabel, consumableLabel);
 
         int result = JOptionPane.showConfirmDialog(this, dialogPanel,
                 "Enter the item's information.", JOptionPane.OK_CANCEL_OPTION);
+        checkResult(result, nameField, descField, costField, weightField, wornField, consumableField, dialogPanel);
+    }
+
+    private void checkResult(int result, JTextField nameField, JTextField descField, JTextField costField,
+                             JTextField weightField, JCheckBox wornField,
+                             JCheckBox consumableField, JPanel dialogPanel) {
         if (result == JOptionPane.OK_OPTION) {
             Double cost;
             Integer weight;
@@ -103,6 +98,26 @@ public class SinglePackMenuButtonPanel extends JPanel {
                 controller.addItem(new PackItem(name, description, weight, cost, isWorn, isConsumable));
             }
         }
+    }
+
+    private JPanel getDialogPanel(JTextField nameField, JTextField descField, JTextField costField,
+                                  JTextField weightField, JCheckBox wornField, JCheckBox consumableField,
+                                  JLabel nameLabel, JLabel descLabel, JLabel costLabel, JLabel weightLabel,
+                                  JLabel wornLabel, JLabel consumableLabel) {
+        JPanel dialogPanel = new JPanel();
+        dialogPanel.add(nameLabel);
+        dialogPanel.add(nameField);
+        dialogPanel.add(descLabel);
+        dialogPanel.add(descField);
+        dialogPanel.add(costLabel);
+        dialogPanel.add(costField);
+        dialogPanel.add(weightLabel);
+        dialogPanel.add(weightField);
+        dialogPanel.add(wornLabel);
+        dialogPanel.add(wornField);
+        dialogPanel.add(consumableLabel);
+        dialogPanel.add(consumableField);
+        return dialogPanel;
     }
 
     // MODIFIES: controller
