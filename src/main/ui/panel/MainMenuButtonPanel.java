@@ -59,7 +59,7 @@ public class MainMenuButtonPanel extends JPanel {
         exitWithoutSavingButton = new JButton("Exit without saving");
         exitWithoutSavingButton.setPreferredSize(BUTTON_DIM);
         exitWithoutSavingButton.addActionListener(e -> {
-            exit();
+            controller.exit();
         });
 
         add(exitWithoutSavingButton);
@@ -79,19 +79,8 @@ public class MainMenuButtonPanel extends JPanel {
                     controller.save(file.getName());
                 }
             }
-
-            exit();
         });
         add(saveAndExitButton);
-    }
-
-    // MODIFIES: the application
-    // EFFECTS: disposes of all frames and closes the app
-    private void exit() {
-        Frame[] frames = Frame.getFrames();
-        for (int i = 0; i < frames.length; i++) {
-            frames[i].dispose();
-        }
     }
 
     // MODIFIES: this

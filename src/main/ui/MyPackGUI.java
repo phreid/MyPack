@@ -67,8 +67,9 @@ public class MyPackGUI extends JFrame {
         pack();
     }
 
-    // EFFECTS: save the current list of packs to file with given name
-    public void save(String name) {
+    // EFFECTS: save the current list of packs to file with given name, and exits
+    //          if successful
+    public void saveAndExit(String name) {
         if (! name.endsWith(".json")) {
             name += ".json";
         }
@@ -77,10 +78,20 @@ public class MyPackGUI extends JFrame {
         try {
             writer.open();
             writer.write(packList);
+            exit();
         } catch (IOException e) {
-            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Error saving file.");
         } finally {
             writer.close();
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: disposes of all frames and closes the app
+    public void exit() {
+        Frame[] frames = Frame.getFrames();
+        for (int i = 0; i < frames.length; i++) {
+            frames[i].dispose();
         }
     }
 

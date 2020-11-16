@@ -69,11 +69,15 @@ public class MainButtonPanelController {
 
     // EFFECTS: saves the user's data to file
     public void save(String name) {
-        parent.save(name);
+        parent.saveAndExit(name);
     }
 
     // EFFECTS: loads the user's data from file
     public void load(String name) {
         parent.load(name);
+    }
+
+    public void exit() {
+        parent.exit();
     }
 }
