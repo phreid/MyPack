@@ -29,6 +29,18 @@
                 }],
                 "name": "cook",
                 "description": "cooking stuff"
+            },
+            {
+                "children": [{
+                    "cost": 123,
+                    "isWorn": true,
+                    "name": "asdfasdf",
+                    "description": "fdasdf",
+                    "weight": 222,
+                    "isConsumable": true
+                }],
+                "name": "adfasdf",
+                "description": ""
             }
         ],
         "name": "pack1",

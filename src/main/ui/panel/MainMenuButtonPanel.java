@@ -1,14 +1,23 @@
-package ui;
+package ui.panel;
 
 import model.Pack;
+import ui.controller.MainButtonPanelController;
+import ui.MyPackGUI;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.File;
 
+/**
+ * The button panel for the main menu.
+ */
 public class MainMenuButtonPanel extends JPanel {
     private JButton newButton;
     private JButton deleteButton;
     private JButton editButton;
+    private JButton saveAndExitButton;
+    private JButton exitWithoutSavingButton;
+    private JButton loadButton;
     private MainButtonPanelController controller;
 
     private static final int HEIGHT = 20;
@@ -17,13 +26,76 @@ public class MainMenuButtonPanel extends JPanel {
 
     // EFFECTS: constructs a new MainMenuButtonPanel
     public MainMenuButtonPanel() {
-        super(new GridLayout(3, 1));
+        super(new GridLayout(5, 1));
 
         setupNewButton();
         setupDeleteButton();
         setupEditButton();
+        setupSaveAndExitButton();
+        setupExitWithoutSavingButton();
+        setupLoadButton();
     }
 
+    // MODIFIES: this
+    // EFFECTS: creates the load button and adds it to the panel
+    private void setupLoadButton() {
+        loadButton = new JButton("Load file");
+        loadButton.setPreferredSize(BUTTON_DIM);
+        loadButton.addActionListener(e -> {
+            JFileChooser chooser = new JFileChooser("./data");
+            int result = chooser.showOpenDialog(getParent());
+            if (result == JFileChooser.APPROVE_OPTION) {
+                File file = chooser.getSelectedFile();
+                controller.load(file.getName());
+            }
+        });
+
+        add(loadButton);
+    }
+
+    // MODIFIES: this
+    // EFFECTS: creates the exit without saving button and adds it to the panel
+    private void setupExitWithoutSavingButton() {
+        exitWithoutSavingButton = new JButton("Exit without saving");
+        exitWithoutSavingButton.setPreferredSize(BUTTON_DIM);
+        exitWithoutSavingButton.addActionListener(e -> {
+            exit();
+        });
+
+        add(exitWithoutSavingButton);
+    }
+
+    // MODIFIES: this
+    // EFFECTS: creates the save and exit button and adds it to the panel
+    private void setupSaveAndExitButton() {
+        saveAndExitButton = new JButton("Save changes and exit");
+        saveAndExitButton.setPreferredSize(BUTTON_DIM);
+        saveAndExitButton.addActionListener(e -> {
+            JFileChooser chooser = new JFileChooser("./data");
+            int result = chooser.showSaveDialog(getParent());
+            if (result == JFileChooser.APPROVE_OPTION) {
+                File file = chooser.getSelectedFile();
+                if (controller != null) {
+                    controller.save(file.getName());
+                }
+            }
+
+            exit();
+        });
+        add(saveAndExitButton);
+    }
+
+    // MODIFIES: the application
+    // EFFECTS: disposes of all frames and closes the app
+    private void exit() {
+        Frame[] frames = Frame.getFrames();
+        for (int i = 0; i < frames.length; i++) {
+            frames[i].dispose();
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: creates the edit button and adds it to the panel
     private void setupEditButton() {
         editButton = new JButton("Edit pack");
         editButton.setPreferredSize(BUTTON_DIM);
@@ -37,6 +109,8 @@ public class MainMenuButtonPanel extends JPanel {
         add(editButton);
     }
 
+    // MODIFIES: this
+    // EFFECTS: creates the delete button and adds it to the panel
     private void setupDeleteButton() {
         deleteButton = new JButton("Delete pack");
         deleteButton.setPreferredSize(BUTTON_DIM);
@@ -50,6 +124,8 @@ public class MainMenuButtonPanel extends JPanel {
         add(deleteButton);
     }
 
+    // MODIFIES: this
+    // EFFECTS: creates the new button and adds it to the panel
     private void setupNewButton() {
         newButton = new JButton("New pack");
         newButton.setPreferredSize(BUTTON_DIM);
@@ -93,10 +169,14 @@ public class MainMenuButtonPanel extends JPanel {
         this.controller = controller;
     }
 
+    // MODIFIES: edit button
+    // EFFECTS: enables the edit button
     public void setEditEnabled(boolean b) {
         editButton.setEnabled(b);
     }
 
+    // MODIFIES: delete button
+    // EFFECTS: enables the delete button
     public void setDeleteEnabled(boolean b) {
         deleteButton.setEnabled(b);
     }

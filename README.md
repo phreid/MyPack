@@ -36,5 +36,9 @@ the weight of worn and consumable items), with base weight considered more relev
     - As a user, I want to be able to change an item's category
     - As a user, I want to be able to delete an item from a category
 - Phase 2
-    - As a user, I want the application to automatically save my data when I quit (**IMPLEMNTED**)
-    - As a user, I want the application to automatically load my data on startup (**IMPLEMENTED**)
+    - As a user, I want the application to automatically save my data when I quit (**AMENDED - SEE PHASE 3**)
+    - As a user, I want the application to automatically load my data on startup (**AMENDED - SEE PHASE 3**)
+- Phase 3
+    - As a user, I want to be able to choose to save my data to a file (**IMPLEMENTED**) 
+    - As a user, I want to be have the option to load a saved file (**IMPLEMENTED**)
+    - As a user, I want to see a graph of each pack's total weight by category (**IMPLEMENTED**)

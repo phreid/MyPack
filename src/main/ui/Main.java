@@ -1,5 +1,8 @@
 package ui;
 
+/**
+ * Main class, responsible for running the app.
+ */
 public class Main {
 
     // EFFECTS: runs the app

@@ -1,4 +1,4 @@
-package ui;
+package ui.adapter;
 
 import model.AbstractEntry;
 import model.Pack;
@@ -9,12 +9,15 @@ import javax.swing.table.AbstractTableModel;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Table model for the single pack menu table.
+ */
 public class SinglePackTableModel extends AbstractTableModel {
     private List<String> colNames;
     private List<AbstractEntry> entries;
     private Pack pack;
 
-    private String tab = "    ";
+    private static final String TAB = "    ";
 
     // EFFECTS: creates a new table model
     public SinglePackTableModel(Pack pack) {
@@ -98,19 +101,20 @@ public class SinglePackTableModel extends AbstractTableModel {
     }
 
     // EFFECTS: returns the entry in the given row
-    AbstractEntry getRowEntry(int row) {
+    public AbstractEntry getRowEntry(int row) {
         return entries.get(row);
     }
 
+    // EFFECTS: returns entry's name with appropriate indentation level
     private String getTabbedName(AbstractEntry entry) {
         String name = entry.getName();
 
         if (entry instanceof Pack) {
             return name;
         } else if (entry instanceof PackList) {
-            return tab + name;
+            return TAB + name;
         } else {
-            return tab + tab + name;
+            return TAB + TAB + name;
         }
     }
 
@@ -160,6 +164,18 @@ public class SinglePackTableModel extends AbstractTableModel {
     public void addItem(PackList packList, PackItem packItem) {
         packList.add(packItem);
         refreshData();
+    }
+
+    // EFFECTS: returns all the categories in the model
+    public List<AbstractEntry> getAllCategories() {
+        List<AbstractEntry> result = new ArrayList<>();
+        for (int i = 0; i < pack.size(); i++) {
+            AbstractEntry entry = pack.get(i);
+            if (! (entry instanceof PackItem)) {
+                result.add(entry);
+            }
+        }
+        return result;
     }
 }
 

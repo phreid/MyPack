@@ -1,4 +1,4 @@
-package ui;
+package ui.adapter;
 
 import model.AbstractEntry;
 
@@ -6,6 +6,9 @@ import javax.swing.table.AbstractTableModel;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Table model for the main menu pack table.
+ */
 public class MainTableModel extends AbstractTableModel {
     private List<String> colNames;
     private List<AbstractEntry> entries;
@@ -24,13 +27,6 @@ public class MainTableModel extends AbstractTableModel {
         this.entries = entries;
         fireTableDataChanged();
     }
-
-//    // MODIFIES: this
-//    // EFFECTS: sets the table data to entryList and updates table
-//    void setTableData(List<AbstractEntry> entries) {
-//        this.entries = entries;
-//        fireTableDataChanged();
-//    }
 
     @Override
     public int getRowCount() {
@@ -97,15 +93,27 @@ public class MainTableModel extends AbstractTableModel {
         fireTableCellUpdated(rowIndex, columnIndex);
     }
 
+    // MODIFIES: this
+    // EFFECTS: adds entry to the model
     public void addEntry(AbstractEntry entry) {
         entries.add(entry);
     }
 
+    // MODIFIES: this
+    // EFFECTS: removes entry at row from the model
     public void removeEntry(int row) {
         entries.remove(row);
     }
 
+    // EFFECTS: returns the entry at row
     public AbstractEntry getEntry(int row) {
         return entries.get(row);
+    }
+
+    // MODIFIES: this
+    // EFFECTS: sets the model data to packList
+    public void setData(List<AbstractEntry> packList) {
+        this.entries = packList;
+        fireTableDataChanged();
     }
 }
