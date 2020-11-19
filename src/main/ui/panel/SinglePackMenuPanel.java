@@ -23,7 +23,7 @@ public class SinglePackMenuPanel extends JPanel {
     private PieChartPanel chartPanel;
     SinglePackButtonPanelController controller;
 
-    // EFFECTS: constructs a new single pack menu panel
+    // EFFECTS: creates a new single pack menu panel
     public SinglePackMenuPanel(MyPackGUI parent, Pack pack) {
         super();
         setLayout(new BorderLayout());

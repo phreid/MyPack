@@ -49,6 +49,7 @@ public class MyPackGUI extends JFrame {
     // EFFECTS: sets the frame's content pane to show the main menu
     public void showMainMenu() {
         setContentPane(mainMenuPanel);
+        revalidate();
     }
 
     // EFFECTS: reads the saved packs file and returns it as a list of Packs,

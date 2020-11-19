@@ -21,7 +21,7 @@ public class SinglePackMenuButtonPanel extends JPanel {
     private static final int WIDTH = (int) (MyPackGUI.FRAME_WIDTH * 0.20);
     private static final Dimension buttonDim = new Dimension(WIDTH, HEIGHT);
 
-    // EFFECTS: constructs and new button panel
+    // EFFECTS: creates a new button panel
     public SinglePackMenuButtonPanel() {
         super();
 

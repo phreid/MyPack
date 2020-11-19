@@ -127,7 +127,7 @@ public class MainMenuButtonPanel extends JPanel {
         add(newButton);
     }
 
-    // MODIFIES: controller
+    // MODIFIES: this
     // EFFECTS: shows the new pack dialog, and adds the resulting new pack to the table
     private void showNewPackDialog() {
         JTextField nameField = new JTextField(10);
@@ -158,13 +158,13 @@ public class MainMenuButtonPanel extends JPanel {
         this.controller = controller;
     }
 
-    // MODIFIES: edit button
+    // MODIFIES: this
     // EFFECTS: enables the edit button
     public void setEditEnabled(boolean b) {
         editButton.setEnabled(b);
     }
 
-    // MODIFIES: delete button
+    // MODIFIES: this
     // EFFECTS: enables the delete button
     public void setDeleteEnabled(boolean b) {
         deleteButton.setEnabled(b);
