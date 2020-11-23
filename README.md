@@ -49,3 +49,15 @@ I chose to include a type hierarchy. The classes are: AbstractEntry, PackList, P
 PackItem both override the abstract methods getTotalWeight, getBaseWeight, and getCost from AbstractEntry. Pack extends
 PackList and has the same functionality, but inserts a default child entry in its constructor.  
 
+### Task 3
+There are several changes I'd make to my project's design:
+- I could probably avoid having a separate Pack class with some more careful use of the Composite pattern.  
+- There is too much coupling in the ui package, especially with the MyPackGUI and SinglePackTableModel classes. For the
+MyPackGUI class, this is caused by several classes needing to call back to the main JFrame, which I could maybe 
+avoid by adding a controller class. The coupling between classes in the panel package and SinglePackTableModel could
+be reduced by implementing the Observer pattern to notify panels of changes to the table model.  
+- There is some duplicated code in the ui package between MainButtonPanelController and SinglePackButtonPanelController,
+MainMenuButtonPanel and SinglePackMenuButtonPanel, and MainMenuPanel and SinglePackMenuPanel. I would refactor these
+pairs of classes to use type hierarchies, e.g. have MainButtonPanelController and SinglePackButtonPanelController both 
+extend a ButtonPanelController type. This would make the ui package easier to maintain, and make it easier to add new ui
+elements in the future. 
