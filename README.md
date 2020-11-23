@@ -42,3 +42,10 @@ the weight of worn and consumable items), with base weight considered more relev
     - As a user, I want to be able to choose to save my data to a file (**IMPLEMENTED**) 
     - As a user, I want to be have the option to load a saved file (**IMPLEMENTED**)
     - As a user, I want to see a graph of each pack's total weight by category (**IMPLEMENTED**)
+    
+## Phase 4
+### Task 2
+I chose to include a type hierarchy. The classes are: AbstractEntry, PackList, PackItem, and Pack. PackList and
+PackItem both override the abstract methods getTotalWeight, getBaseWeight, and getCost from AbstractEntry. Pack extends
+PackList and has the same functionality, but inserts a default child entry in its constructor.  
+
